@@ -57,17 +57,17 @@ NOTE:  Any combination/order of above arguments is allowed.
 
 ### Autorun the program at startup
 
-1. Edit the provided nixie.service template to reflect the full path down to your binary:
+1; Edit the provided nixie.service template to reflect the full path down to your binary:
 
 NOTE: Fix the path on the following line in nixie.service to match your binary location.
 
   ExecStart=/nixie/NixieClockRaspberryPi-shaner/DisplayNixie/bin/DisplayNixie
 
-2. Copy your customized nixie.service into the /etc/systemd/system directory:
+2; Copy your customized nixie.service into the /etc/systemd/system directory:
 
 * $ sudo cp nixie.service /etc/systemd/system
 
-3. Reload the systemd state and start the nixie service:
+3; Reload the systemd state and start the nixie service:
 
 * $ sudo systemctl daemon-reload
 * $ sudo systemctl enable nixie
@@ -75,7 +75,7 @@ NOTE: Fix the path on the following line in nixie.service to match your binary l
 
 NOTE:  The systemd will auto-start DisplayNixie whenever the system is booted.
 
-4. To stop and/or restart the nixie binary at any time:
+4; To stop and/or restart the nixie binary at any time:
 
 * $ sudo systemctl stop nixie
 * $ sudo systemctl restart nixie
