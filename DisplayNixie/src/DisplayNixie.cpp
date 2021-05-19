@@ -673,6 +673,7 @@ int main(int argc, char* argv[]) {
         }
         
         delay (TOTAL_DELAY);
+		printf("before while\n");
 	}
 	while (continueRunningClock);
     
