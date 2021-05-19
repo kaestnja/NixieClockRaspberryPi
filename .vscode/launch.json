@@ -8,7 +8,7 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/CLITool/Debug/CLITool",
+            "program": "${workspaceFolder}/CLITool/bin/DisplayNixie",
             "args": ["setsystime"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
