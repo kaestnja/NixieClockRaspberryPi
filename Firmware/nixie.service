@@ -1,0 +1,15 @@
+
+[Unit]
+Description=Nixie Clock
+After=network.target
+
+[Service]
+ExecStart=/home/pi/NixieClockRaspberryPi/DisplayNixie/bin/DisplayNixie 24hour fireworks
+WorkingDirectory=/tmp
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=pi
+
+[Install]
+WantedBy=multi-user.target
