@@ -8,8 +8,27 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/DisplayNixie/bin/DisplayNixie",      //  "${workspaceFolder}/DisplayNixie/bin/DisplayNixie",
-            "args": [],
+            "program": "${workspaceFolder}/CLITool/Debug/CLITool",
+            "args": ["setsystime"],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "(gdb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/DisplayNixie/bin/DisplayNixie",
+            "args": ["24hour"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
