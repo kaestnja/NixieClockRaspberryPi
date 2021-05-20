@@ -8,7 +8,7 @@
 
 #define _DESCRIPTION "Display time on shields NCS318-6 v1.2 12/07/2020 GRA&AFCH SHANER GILLETT KAESTNER"
 #define _VERSION "2.3.3"
-#define _SUBVERSION "4"
+#define _SUBVERSION "5"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -336,7 +336,7 @@ void displayOnTubes(char* _stringToDisplayOnTubes)
 
 int main(int argc, char* argv[]) {
 	printf("%s \n\r", _DESCRIPTION);
-	printf("v%1.1f \n\r", _VERSION);
+	//printf("v%1.1f \n\r", _VERSION);
 	printf("v%s \n\r", _VERSION);
 	printf("%s", argv[1]);
 

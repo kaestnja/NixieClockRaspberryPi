@@ -7,8 +7,8 @@
 //============================================================================
 
 #define _DESCRIPTION "Display digits on shields NCS318-6 v1.2 12/07/2020 GRA&AFCH KAESTNER"
-#define _VERSION 1.4
-#define _SUBVERSION "4"
+#define _VERSION "1.4"
+#define _SUBVERSION "5"
 
 #include <iostream>
 #include <wiringPi.h>
@@ -67,7 +67,7 @@ void writeRTCDate(tm date) {
 
 int main(int argc, char* argv[]) {
 	printf("%s \n\r", _DESCRIPTION);
-	printf("v%1.1f \n\r", _VERSION);
+	//printf("v%1.1f \n\r", _VERSION);
 	printf("v%s \n\r", _VERSION);
 	printf("%s", argv[1]);
 
