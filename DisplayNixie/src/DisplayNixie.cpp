@@ -201,12 +201,12 @@ void funcMode(void) {
 	if ((millis() - modeTime) > DEBOUNCE_DELAY) {
 		puts("MODE button was pressed.");
         // Mode Switch toggles Fireworks on/off
-		doFireworks = !doFireworks;
-		if (!doFireworks)
-			resetFireWorks();
-		else
-			initFireWorks();
-		modeTime = millis();
+		//doFireworks = !doFireworks;
+		//if (!doFireworks)
+		//	resetFireWorks();
+		//else
+		//	initFireWorks();
+		//modeTime = millis();
 	}
 }
 
@@ -299,9 +299,9 @@ uint32_t addBlinkTo32Rep(uint32_t var) {
 
 void switchOnClock()
 {
-    if (doFireworks) {
-        initFireWorks();
-    }
+    //if (doFireworks) {
+    //    initFireWorks();
+    //}
     clockIsSwitchedOn = true;
 }
 
@@ -529,13 +529,13 @@ int main(int argc, char* argv[]) {
     softPwmCreate(GREEN_LIGHT_PIN, 0, MAX_POWER_EXTENT);
     softPwmCreate(BLUE_LIGHT_PIN, 0, MAX_POWER_EXTENT);
     softPwmCreate(RED_LIGHT_PIN, 0, MAX_POWER_EXTENT);
-	if (doFireworks) {
-		initFireWorks();
-    }
-    else
-	{
-		resetFireWorks();
-	}
+	//if (doFireworks) {
+	//	initFireWorks();
+    //}
+    //else
+	//{
+	//	resetFireWorks();
+	//}
 
     // Mode Switch toggles Fireworks on/off
 	wiringPiISR(MODE_BUTTON_PIN, INT_EDGE_RISING, &funcMode);
@@ -599,23 +599,26 @@ int main(int argc, char* argv[]) {
                 }
         }
         
-        if (doFireworks && clockIsSwitchedOn)
+        //if (doFireworks && clockIsSwitchedOn)
+		if (clockIsSwitchedOn)
 		{
 			// Handle Fireworks speed UP / Down
 			if (digitalRead(UP_BUTTON_PIN) == 0 && (millis() - buttonDelay) > DEBOUNCE_DELAY) {
-				funcUp();
-				initFireWorks();
+				//funcUp();
+				//initFireWorks();
 				buttonDelay = millis();
+				printf("UP_BUTTON_PIN\n");
 			}
 			if (digitalRead(DOWN_BUTTON_PIN) == 0 && (millis() - buttonDelay) > DEBOUNCE_DELAY) {
-				funcDown();
-				initFireWorks();
+				//funcDown();
+				//initFireWorks();
 				buttonDelay = millis();
+				printf("UP_BUTTON_PIN\n");
 			}
-            if (millis() > (lastRotateFireworks + fireworksCyclePeriod)) {
-                rotateFireWorks();
-                lastRotateFireworks = millis();
-            }
+            //if (millis() > (lastRotateFireworks + fireworksCyclePeriod)) {
+            //    rotateFireWorks();
+            //    lastRotateFireworks = millis();
+            //}
 		}
 
 		pinMode(LEpin, OUTPUT); // todo: move this to outside of loop, so run one-time only???
