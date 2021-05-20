@@ -3,7 +3,7 @@
 // Author      : GRA&AFCH @ Leon Shaner; Tony Gillett; Jan Kaestner
 // Version     : v2.3.3
 // Copyright   : Free
-// Description : Display time on shields NCS318-6 v1.2 12/07/2020 or maybe NCS314 v2.x or maybe NCS312
+// Description : Display time on shields NCS318-6 v1.2 12/07/2020
 //============================================================================
 
 #define _VERSION "2.3.3 SHANER GILLETT KAESTNER"
@@ -18,7 +18,7 @@
 #include <ctime>
 #include <string.h>
 #include <wiringPiI2C.h>
-#include <softTone.h>
+//#include <softTone.h>
 #include <softPwm.h>
 #include <signal.h>
 

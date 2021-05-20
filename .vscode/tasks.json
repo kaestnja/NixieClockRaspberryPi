@@ -6,7 +6,8 @@
         {
             "label": "build",
             "type": "process",
-            "command": "ssh pi@rpinixie '/usr/bin/make /home/pi/NixieClockRaspberryPi/DisplayNixie/src/makefile'",
+            //"command": "ssh pi@rpinixie '/usr/bin/make /home/pi/NixieClockRaspberryPi/DisplayNixie/src/makefile'",
+            "command": "ssh pi@rpinixie 'cd /home/pi/NixieClockRaspberryPi/DisplayNixie/src && make'",
             "isBackground": true,
             //"isShellCommand": true, <-- replace by type = shell
         }

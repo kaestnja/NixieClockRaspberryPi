@@ -1,10 +1,13 @@
 //============================================================================
 // Name        : DisplayNixie.cpp
-// Author      : GRA&AFCH
-// Version     : v1.3
+// Author      : GRA&AFCH; Jan Kaestner
+// Version     : v1.4
 // Copyright   : Free
-// Description : Display digits on shields
+// Description : Display digits on shields NCS318-6 v1.2 12/07/2020
 //============================================================================
+
+#define _VERSION 1.4
+#define _SUBVERSION "4"
 
 #include <iostream>
 #include <wiringPi.h>
@@ -14,7 +17,7 @@
 #include <wiringPiI2C.h>
 #include <time.h>
 
-#define _VERSION 1.3
+
 #define I2CAdress 0x68
 #define I2CFlush 0
 #define SECOND_REGISTER 0x0
