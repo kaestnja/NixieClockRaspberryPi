@@ -54,8 +54,8 @@
             "cwd": "${fileDirname}",
             "environment": [],
             "externalConsole": false,
-            // without preLaunchTask, on HOST run: ssh -L9091:localhost:9091 pi@rpi3  gdbserver :9091 ~/program/hello
-            "preLaunchTask": "gdbserver",
+            // without preLaunchTask, on HOST run: ssh -L9091:localhost:9091 pi@rpi3  gdbserver :9091 ~/NixieClockRaspberryPi/Firmware/bin/DisplayNixie
+            "preLaunchTask": "gdbserverFirmware",
             "serverStarted": "Listening on port",
             "filterStderr": true,
             "setupCommands": [
@@ -81,7 +81,7 @@
             "cwd": "${fileDirname}",
             "environment": [],
             "externalConsole": false,
-            // without preLaunchTask, on HOST run: ssh -L9091:localhost:9091 pi@rpi3  gdbserver :9091 ~/program/hello
+            // without preLaunchTask, on HOST run: ssh -L9091:localhost:9091 pi@rpi3  gdbserver :9091 ~/NixieClockRaspberryPi/Firmware for NCS318/bin/DisplayNixie
             "preLaunchTask": "gdbserver",
             "serverStarted": "Listening on port",
             "filterStderr": true,
