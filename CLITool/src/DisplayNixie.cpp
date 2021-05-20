@@ -66,7 +66,9 @@ void writeRTCDate(tm date) {
 }
 
 int main(int argc, char* argv[]) {
-	printf("Display Nixie CLI Tool v%1.1f \n\r", _VERSION);
+	printf("%s \n\r", _DESCRIPTION);
+	printf("v%1.1f \n\r", _VERSION);
+	printf("v%s \n\r", _VERSION);
 	printf("%s", argv[1]);
 
 	if (argc < 2)

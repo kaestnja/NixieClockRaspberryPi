@@ -335,7 +335,9 @@ void displayOnTubes(char* _stringToDisplayOnTubes)
 //static int use12hourFlag;
 
 int main(int argc, char* argv[]) {
-	printf("Display Nixie CLI Tool v%1.1f \n\r", _VERSION);
+	printf("%s \n\r", _DESCRIPTION);
+	printf("v%1.1f \n\r", _VERSION);
+	printf("v%s \n\r", _VERSION);
 	printf("%s", argv[1]);
 
 	if (argc < 2)
@@ -425,8 +427,6 @@ int main(int argc, char* argv[]) {
                 abort ();
             }
     }
-    
-    //use12hour = use12hourFlag;
 
     // Print any remaining command line arguments (not options). 
     if (optind < argc)
@@ -442,11 +442,6 @@ int main(int argc, char* argv[]) {
   	signal(SIGINT, signal_handler);
   	signal(SIGQUIT, signal_handler);
   	signal(SIGTERM, signal_handler);
-
-	printf("Nixie Clock v%s \n\r", _VERSION);
-
-	//wiringPiSetup();
-
 
     // Tell the user the RTC mode
 	if (useSystemRTC)
