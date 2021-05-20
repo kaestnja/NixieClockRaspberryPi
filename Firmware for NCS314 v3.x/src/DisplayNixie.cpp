@@ -147,6 +147,24 @@ void funcMode(void) {
 	}
 }
 
+
+
+uint32_t get32Rep(char * _stringToDisplay, int start) {
+	uint32_t var32 = 0;
+
+	var32= (SymbolArray[_stringToDisplay[start]-0x30])<<20;
+	var32|=(SymbolArray[_stringToDisplay[start - 1]-0x30])<<10;
+	var32|=(SymbolArray[_stringToDisplay[start - 2]-0x30]);
+	return var32;
+}
+
+void fillBuffer(uint32_t var32, unsigned char * buffer, int start) {
+	buffer[start] = var32>>24;
+	buffer[start + 1] = var32>>16;
+	buffer[start + 2] = var32>>8;
+	buffer[start + 3] = var32;
+}
+
 void dotBlink()
 {
 	static unsigned int lastTimeBlink=millis();
@@ -157,8 +175,8 @@ void dotBlink()
 		dotState = !dotState;
 	}
 }
-
-/*void rotateFireWorks() {
+/*
+void rotateFireWorks() {
 	int fireworks[] = {0,0,1,
 					  -1,0,0,
 			           0,1,0,
@@ -180,24 +198,6 @@ void dotBlink()
 	if (rotator > 5)
 		rotator = 0;
 }*/
-
-uint32_t get32Rep(char * _stringToDisplay, int start) {
-	uint32_t var32 = 0;
-
-	var32= (SymbolArray[_stringToDisplay[start]-0x30])<<20;
-	var32|=(SymbolArray[_stringToDisplay[start - 1]-0x30])<<10;
-	var32|=(SymbolArray[_stringToDisplay[start - 2]-0x30]);
-	return var32;
-}
-
-void fillBuffer(uint32_t var32, unsigned char * buffer, int start) {
-
-	buffer[start] = var32>>24;
-	buffer[start + 1] = var32>>16;
-	buffer[start + 2] = var32>>8;
-	buffer[start + 3] = var32;
-}
-
 
 uint32_t addBlinkTo32Rep(uint32_t var) {
 	if (dotState)
