@@ -6,6 +6,7 @@
 // Description : Display digits on shields NCS318-6 v1.2 12/07/2020
 //============================================================================
 
+#define _DESCRIPTION "Display digits on shields NCS318-6 v1.2 12/07/2020 GRA&AFCH KAESTNER"
 #define _VERSION 1.4
 #define _SUBVERSION "4"
 

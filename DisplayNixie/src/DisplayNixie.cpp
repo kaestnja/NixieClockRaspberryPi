@@ -6,7 +6,8 @@
 // Description : Display time on shields NCS318-6 v1.2 12/07/2020
 //============================================================================
 
-#define _VERSION "2.3.3 SHANER GILLETT KAESTNER"
+#define _DESCRIPTION "Display time on shields NCS318-6 v1.2 12/07/2020 GRA&AFCH SHANER GILLETT KAESTNER"
+#define _VERSION "2.3.3"
 #define _SUBVERSION "4"
 
 #include <stdio.h>
@@ -331,10 +332,26 @@ void displayOnTubes(char* _stringToDisplayOnTubes)
 
 
 /* Flag set by ‘--verbose’. */
-static int use12hourFlag;
+//static int use12hourFlag;
 
 int main(int argc, char* argv[]) {
+	printf("Display Nixie CLI Tool v%1.1f \n\r", _VERSION);
+	printf("%s", argv[1]);
 
+	if (argc < 2)
+	{
+		printf("Enter digits to display... or commands: \n now - show current time, \n "
+				//"clock - loop the program and update time every second, \n "
+				"[digits] - and six or nine digits, \n "
+				"settime x - set time, where x time in format [hh:mm:ss], \n "
+				"setsystime - set current time from OS, \n "
+				//"ledson - turn on RGB LEDs,\n "
+				//"ledsoff - turn off RGB LEDs, \n "
+				//"setledscolor x - set color of LEDs where x is color in [RRR:GGG:BBB] format, \n "
+				//"setledsbright x - [0...255], \n "
+				"? - show this help.");
+		return 0;
+	}
     //int c;
 	wiringPiSetup();    
     while (1)
@@ -422,7 +439,7 @@ int main(int argc, char* argv[]) {
             }
     }
     
-    use12hour = use12hourFlag;
+    //use12hour = use12hourFlag;
 
     /* Print any remaining command line arguments (not options). 
     if (optind < argc)
