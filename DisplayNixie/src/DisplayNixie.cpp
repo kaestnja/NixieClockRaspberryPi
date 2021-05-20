@@ -450,16 +450,16 @@ int main(int argc, char* argv[]) {
 		puts("Using Nixie embedded RTC (e.g. not NTP assisted).");
 
     // Tell the user the hour mode
-	if (use12hour)
-		puts("Using 12-hour display (implied a.m./p.m.).");
-	else
-		puts("Using 24-hour display.");
+	//if (use12hour)
+	//	puts("Using 12-hour display (implied a.m./p.m.).");
+	//else
+	//	puts("Using 24-hour display.");
 
     // Tell the user the fireworks mode
-	if (doFireworks)
-		puts("Fireworks ENABLED at start.");
-	else
-		puts("Fireworks DISABLED at start.");
+	//if (doFireworks)
+	//	puts("Fireworks ENABLED at start.");
+	//else
+	//	puts("Fireworks DISABLED at start.");
         
     // Tell the user the cathode protection mode
 	if (doCathodeProtection)
@@ -509,7 +509,7 @@ int main(int argc, char* argv[]) {
 	//}
 
     // Mode Switch toggles Fireworks on/off
-	wiringPiISR(MODE_BUTTON_PIN, INT_EDGE_RISING, &funcMode);
+	//wiringPiISR(MODE_BUTTON_PIN, INT_EDGE_RISING, &funcMode);
 
     // Open the Nixie device
 	fileDesc = wiringPiI2CSetup(I2CAdress);
@@ -528,10 +528,10 @@ int main(int argc, char* argv[]) {
 		return 0;
 	}
 
-	pinMode(R5222_PIN, INPUT);
-	pullUpDnControl(R5222_PIN, PUD_UP);
-	HV5222 = !digitalRead(R5222_PIN);
-	if (HV5222) puts("R52222 resistor detected. HV5222 algorithm is used.");
+	//pinMode(R5222_PIN, INPUT);
+	//pullUpDnControl(R5222_PIN, PUD_UP);
+	//HV5222 = !digitalRead(R5222_PIN);
+	//if (HV5222) puts("R52222 resistor detected. HV5222 algorithm is used.");
 
     // Loop forever displaying the time
 	long buttonDelay = millis();
