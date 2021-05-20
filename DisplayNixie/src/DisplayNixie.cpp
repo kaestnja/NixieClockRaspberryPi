@@ -340,31 +340,33 @@ int main(int argc, char* argv[]) {
 
 	if (argc < 2)
 	{
-		printf("Enter digits to display... or commands: \n now - show current time, \n "
-				//"clock - loop the program and update time every second, \n "
-				"[digits] - and six or nine digits, \n "
-				"settime x - set time, where x time in format [hh:mm:ss], \n "
-				"setsystime - set current time from OS, \n "
-				//"ledson - turn on RGB LEDs,\n "
-				//"ledsoff - turn off RGB LEDs, \n "
-				//"setledscolor x - set color of LEDs where x is color in [RRR:GGG:BBB] format, \n "
-				//"setledsbright x - [0...255], \n "
-				"? - show this help.");
+		printf("Enter digits to display... or commands: \n"
+			"now - show current time, \n "
+			"clock - loop the program and update time every second, \n "
+			"[digits] - and six or nine digits, \n "
+			"settime x - set time, where x time in format [hh:mm:ss], \n "
+			"setsystime - set current time from OS, \n "
+			//"ledson - turn on RGB LEDs,\n "
+			//"ledsoff - turn off RGB LEDs, \n "
+			//"setledscolor x - set color of LEDs where x is color in [RRR:GGG:BBB] format, \n "
+			//"setledsbright x - [0...255], \n "
+			"? - show this help.");
 		return 0;
 	}
-    //int c;
-	wiringPiSetup();    
+	wiringPiSetup();   
+	if (wiringPiSPISetupMode (0, 2000000, 2)) printf("SPI ok\n\r");
+		else {printf("SPI NOT ok\n\r"); return 0;} 
+
     while (1)
     {
         static struct option long_options[] =
         {
             /* These options set a flag. */
-            {"12hour",            no_argument,       &use12hourFlag, 1},
-            {"24hour",            no_argument,       &use12hourFlag, 0},
-            /* These options don’t set a flag.
-               We distinguish them by their indices. */
+            //{"12hour",            no_argument,       &use12hourFlag, 1},
+            //{"24hour",            no_argument,       &use12hourFlag, 0},
+            //These options don’t set a flag. We distinguish them by their indices. */
             {"no-sysclock",       no_argument,       0, 'c'},
-            //{"fireworks",         required_argument, 0, 'f'},
+            //{"fireworks",       required_argument, 0, 'f'},
             {"no-protect",        no_argument,       0, 'n'},
             {"extended-protect1", required_argument, 0, 'p'},
             {"extended-protect2", required_argument, 0, 'q'},
@@ -373,66 +375,51 @@ int main(int argc, char* argv[]) {
             {"brightness",        required_argument, 0, 'b'},
             {0, 0, 0, 0}
         };
-        
         /* getopt_long stores the option index here. */
         int option_index = 0;
-
         int c = getopt_long (argc, argv, "cf:np:q:o:s:b:", long_options, &option_index);
-
         /* Detect the end of the options. */
-        if (c == -1) {
-            break;
-        }
-
+        if (c == -1) {break;}
         // Basic command line args handling. Note that code is not robust - no checks on the format/validity of user inputs.
         switch (c)
         {
             case 0:
                 /* If this option set a flag, do nothing else now. */
                 if (long_options[option_index].flag != 0)
-                  break;
-                printf ("option %s", long_options[option_index].name);
+                	break;
+                	printf ("option %s", long_options[option_index].name);
                 if (optarg)
                     printf (" with arg %s", optarg);
-                printf ("\n");
-                break;
-                
+                	printf ("\n");
+                	break;
             case 'c':
                 // Don't use system clock
                 useSystemRTC = false;
                 break;
-
             //case 'f':
             //    // do fireworks
             //    fireworksCyclePeriod = atoi(optarg);
             //    doFireworks = (fireworksCyclePeriod != 0);
             //    break;
-                
            case 'n':
                 // disable cathode protection
                 doCathodeProtection = false;
                 break;
-                
             case 'p':
                 cathodeProtectionLongTime[0] = optarg;
                 break;
-                
             case 'q':
                 cathodeProtectionLongTime[1] = optarg;
                 break;
-                
             case 'o':
                 turnClockOnTime = optarg;
                 break;
-                
             case 's':
                 turnClockOffTime = optarg;
                 break;
-                
             case 'b':
                 maxLEDBrightness = atoi(optarg);
                 break;
-
             default:
                 printf("aborting");
                 abort ();
@@ -441,7 +428,7 @@ int main(int argc, char* argv[]) {
     
     //use12hour = use12hourFlag;
 
-    /* Print any remaining command line arguments (not options). 
+    // Print any remaining command line arguments (not options). 
     if (optind < argc)
     {
         printf ("non-option ARGV-elements: ");
@@ -449,7 +436,7 @@ int main(int argc, char* argv[]) {
           printf ("%s ", argv[optind++]);
         putchar ('\n');
     }
-    */
+    //*/
     
 	// Setup signal handlers
   	signal(SIGINT, signal_handler);

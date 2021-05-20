@@ -72,21 +72,22 @@ int main(int argc, char* argv[]) {
 	if (argc < 2)
 	{
 		printf("Enter digits to display... or commands: \n now - show current time, \n "
-				//"clock - loop the program and update time every second, \n "
-				"[digits] - and six or nine digits, \n "
-				"settime x - set time, where x time in format [hh:mm:ss], \n "
-				"setsystime - set current time from OS, \n "
-				//"ledson - turn on RGB LEDs,\n "
-				//"ledsoff - turn off RGB LEDs, \n "
-				//"setledscolor x - set color of LEDs where x is color in [RRR:GGG:BBB] format, \n "
-				//"setledsbright x - [0...255], \n "
-				"? - show this help.");
+			"now - show current time, \n "
+			//"clock - loop the program and update time every second, \n "
+			"[digits] - and six or nine digits, \n "
+			"settime x - set time, where x time in format [hh:mm:ss], \n "
+			"setsystime - set current time from OS, \n "
+			//"ledson - turn on RGB LEDs,\n "
+			//"ledsoff - turn off RGB LEDs, \n "
+			//"setledscolor x - set color of LEDs where x is color in [RRR:GGG:BBB] format, \n "
+			//"setledsbright x - [0...255], \n "
+			"? - show this help.");
 		return 0;
 	}
 	wiringPiSetup ();
 
 	if (wiringPiSPISetupMode (0, 2000000, 2)) printf("SPI ok\n\r");
-			else {printf("SPI NOT ok\n\r"); return 0;}
+		else {printf("SPI NOT ok\n\r"); return 0;}
 
 	I2CFileDesc = wiringPiI2CSetup(I2CAdress);
 
