@@ -274,7 +274,7 @@ int main(int argc, char* argv[]) {
 		if (digitalRead(MODE_BUTTON_PIN) == 0 && (millis() - modeDelay) > DEBOUNCE_DELAY) {
 					resetRTCSecond();
 					modeDelay = millis();
-				}
+		}
 
 		//rotateFireWorks();
 		digitalWrite(LEpin, LOW);
