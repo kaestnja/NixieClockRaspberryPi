@@ -16,18 +16,41 @@
 #include <string.h>
 #include <wiringPiI2C.h>
 #include <time.h>
+using namespace std;
 
-
+#define R5222_PIN 22
+bool HV5222;
+#define LEpin 3
+#define UP_BUTTON_PIN 1
+#define DOWN_BUTTON_PIN 4
+#define MODE_BUTTON_PIN 5
+#define BUZZER_PIN 0
 #define I2CAdress 0x68
 #define I2CFlush 0
+
+#define DEBOUNCE_DELAY 150
+#define TOTAL_DELAY 10
+#define CATHODE_PROTECTION_DELAY_SHORT 100
+#define CATHODE_PROTECTION_DELAY_LONG 10000
+#define CATHODE_PROTECTION_LONG_TIME_1 "020000" // Must align to an hour
+#define CATHODE_PROTECTION_LONG_TIME_2 "040000" // Must align to an hour
+
 #define SECOND_REGISTER 0x0
 #define MINUTE_REGISTER 0x1
 #define HOUR_REGISTER 0x2
+#define WEEK_REGISTER 0x3
+#define DAY_REGISTER 0x4
+#define MONTH_REGISTER 0x5
+#define YEAR_REGISTER 0x6
 
-using namespace std;
-int LEpin=3;
+
+uint16_t SymbolArray[10] = {1, 2, 4, 8, 16, 32, 64, 128, 256, 512};
+
 int I2CFileDesc;
-uint16_t SymbolArray[10]={1, 2, 4, 8, 16, 32, 64, 128, 256, 512};
+
+int bcdToDec(int val) {
+	return ((val / 16  * 10) + (val % 16));
+}
 
 int decToBcd(int val) {
 	return ((val / 10  * 16) + (val % 10));

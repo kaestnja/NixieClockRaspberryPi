@@ -21,15 +21,18 @@
 //#include <softTone.h>
 #include <softPwm.h>
 #include <signal.h>
-
 using namespace std;
+
 #define R5222_PIN 22
 bool HV5222;
 #define LEpin 3
+#define BUZZER_PIN 0
 #define UP_BUTTON_PIN 1
 #define DOWN_BUTTON_PIN 4
 #define MODE_BUTTON_PIN 5
-#define BUZZER_PIN 0
+#define RED_LIGHT_PIN 28
+#define GREEN_LIGHT_PIN 27
+#define BLUE_LIGHT_PIN 29
 #define I2CAdress 0x68
 #define I2CFlush 0
 
@@ -48,9 +51,6 @@ bool HV5222;
 #define MONTH_REGISTER 0x5
 #define YEAR_REGISTER 0x6
 
-#define RED_LIGHT_PIN 28
-#define GREEN_LIGHT_PIN 27
-#define BLUE_LIGHT_PIN 29
 #define MAX_POWER_EXTENT 100
 #define MAX_POWER 100
 #define INIT_CYCLE_FREQ 400
@@ -76,13 +76,7 @@ bool HV5222;
 uint16_t SymbolArray[10] = {1, 2, 4, 8, 16, 32, 64, 128, 256, 512};
 
 int fileDesc;
-
-int redLight = 0;
-int greenLight = 0;
-int blueLight = 0;
-int lightCycle = 0;
 bool dotState = 0;
-int rotator = 0;
 int maxLEDBrightness = MAX_POWER;
 unsigned long fireworksCyclePeriod = INIT_CYCLE_FREQ;
 char _lastStringDisplayed[8];
@@ -93,18 +87,8 @@ string turnClockOnTime;
 string turnClockOffTime;
 
 bool clockIsSwitchedOn = true;
-
-// Set initial fireworks mode true=on; false=off
-bool doFireworks = false;
-
-// Set default clock mode
 // NOTE:  true means rely on system to keep time (e.g. NTP assisted for accuracy).
 bool useSystemRTC = true;
-
-// Set the hour mode
-// Set use12hour = true for hours 0-12 and 1-11 (e.g. a.m./p.m. implied)
-// Set use12hour = false for hours 0-23
-bool use12hour = false;
 bool isStartup = true;
 bool doCathodeProtection = true;
 
@@ -179,9 +163,9 @@ void initPin(int pin) {
 
 void resetFireWorks() {
     printf("in resetFireWorks\n");
-	redLight = 0;
-	greenLight = 0;
-	blueLight = 0; 
+	//redLight = 0;
+	//greenLight = 0;
+	//blueLight = 0; 
 	//softPwmWrite(RED_LIGHT_PIN, redLight);
 	//softPwmWrite(GREEN_LIGHT_PIN, greenLight);
 	//softPwmWrite(BLUE_LIGHT_PIN, blueLight);
@@ -189,9 +173,9 @@ void resetFireWorks() {
 
 void initFireWorks() {
     printf("in new initFireWorks\n");
-	redLight = maxLEDBrightness;
-	greenLight = maxLEDBrightness;
-	blueLight = maxLEDBrightness; 
+	//redLight = maxLEDBrightness;
+	//greenLight = maxLEDBrightness;
+	//blueLight = maxLEDBrightness; 
 	//softPwmWrite(RED_LIGHT_PIN, redLight);
 	//softPwmWrite(GREEN_LIGHT_PIN, greenLight);
 	//softPwmWrite(BLUE_LIGHT_PIN, blueLight);
