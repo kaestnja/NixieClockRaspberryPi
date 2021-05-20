@@ -151,7 +151,7 @@ void updateRTCHour(tm date) {
 void updateRTCMinute(tm date) {
 	wiringPiI2CWrite(fileDesc, I2CFlush);
 	wiringPiI2CWriteReg8(fileDesc,MINUTE_REGISTER,decToBcd(date.tm_min));
-	#wiringPiI2CWriteReg8(fileDesc,HOUR_REGISTER,decToBcd(date.tm_hour));
+	//wiringPiI2CWriteReg8(fileDesc,HOUR_REGISTER,decToBcd(date.tm_hour));
 	wiringPiI2CWrite(fileDesc, I2CFlush);
 }
 void resetRTCSecond() {
