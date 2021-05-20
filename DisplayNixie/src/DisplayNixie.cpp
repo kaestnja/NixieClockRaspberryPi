@@ -200,7 +200,8 @@ void initFireWorks() {
 void funcMode(void) {
 	static unsigned long modeTime = 0;
 	if ((millis() - modeTime) > DEBOUNCE_DELAY) {
-		puts("MODE button was pressed.");
+		printf("MODE button was pressed. new");
+		//puts("MODE button was pressed.");
         // Mode Switch toggles Fireworks on/off
 		//doFireworks = !doFireworks;
 		//if (!doFireworks)
@@ -215,28 +216,28 @@ void funcUp(void) {
 	static unsigned long buttonTime = 0;
 	if ((millis() - buttonTime) > DEBOUNCE_DELAY) {
         // Up button speeds up Fireworks
-		fireworksCyclePeriod = (fireworksCyclePeriod - INIT_CYCLE_BUMP);
-		if (fireworksCyclePeriod < 0) {
-			fireworksCyclePeriod = 0;
-		}
-		printf("Up button was pressed. Frequency=%lu\n", fireworksCyclePeriod);
-		buttonTime = millis();
+		//fireworksCyclePeriod = (fireworksCyclePeriod - INIT_CYCLE_BUMP);
+		//if (fireworksCyclePeriod < 0) {
+		//	fireworksCyclePeriod = 0;
+		//}
+		//buttonTime = millis();
+		printf("Up button was pressed. new"); // Frequency=%lu\n", fireworksCyclePeriod);
 	}
+	buttonTime = millis();
 }
 
 void funcDown(void) {
 	static unsigned long buttonTime = 0;
 	if ((millis() - buttonTime) > DEBOUNCE_DELAY) {
         // Down button slows down Fireworks
-		fireworksCyclePeriod = (fireworksCyclePeriod - INIT_CYCLE_BUMP);
-		printf("Down button was pressed. Frequency=%lu\n", fireworksCyclePeriod);
+		//fireworksCyclePeriod = (fireworksCyclePeriod - INIT_CYCLE_BUMP);
+		printf("Down button was pressed. new"); // Frequency=%lu\n", fireworksCyclePeriod);
 	}
 	buttonTime = millis();
 }
 
 uint32_t get32Rep(char * _stringToDisplay, int start) {
 	uint32_t var32 = 0;
-
 	var32= (SymbolArray[_stringToDisplay[start] - 0x30]) << 20;
 	var32|=(SymbolArray[_stringToDisplay[start - 1] - 0x30]) << 10;
 	var32|=(SymbolArray[_stringToDisplay[start - 2] - 0x30]);
@@ -311,9 +312,9 @@ void switchOffClock()
 {
     clockIsSwitchedOn = false;
     digitalWrite(LEpin, LOW);
-    if (doFireworks) {
-        resetFireWorks();
-    }
+    //if (doFireworks) {
+    //    resetFireWorks();
+    //}
 }
 
 // Interrupt handler to turn off Nixie upon SIGINT(2), SIGQUIT(3), SIGTERM(15), but not SIGKILL(9)
@@ -366,7 +367,7 @@ static int use12hourFlag;
 int main(int argc, char* argv[]) {
 
     //int c;
-    
+	wiringPiSetup();    
     while (1)
     {
         static struct option long_options[] =
@@ -377,7 +378,7 @@ int main(int argc, char* argv[]) {
             /* These options don’t set a flag.
                We distinguish them by their indices. */
             {"no-sysclock",       no_argument,       0, 'c'},
-            {"fireworks",         required_argument, 0, 'f'},
+            //{"fireworks",         required_argument, 0, 'f'},
             {"no-protect",        no_argument,       0, 'n'},
             {"extended-protect1", required_argument, 0, 'p'},
             {"extended-protect2", required_argument, 0, 'q'},
@@ -415,11 +416,11 @@ int main(int argc, char* argv[]) {
                 useSystemRTC = false;
                 break;
 
-            case 'f':
-                // do fireworks
-                fireworksCyclePeriod = atoi(optarg);
-                doFireworks = (fireworksCyclePeriod != 0);
-                break;
+            //case 'f':
+            //    // do fireworks
+            //    fireworksCyclePeriod = atoi(optarg);
+            //    doFireworks = (fireworksCyclePeriod != 0);
+            //    break;
                 
            case 'n':
                 // disable cathode protection
@@ -471,7 +472,7 @@ int main(int argc, char* argv[]) {
 
 	printf("Nixie Clock v%s \n\r", _VERSION);
 
-	wiringPiSetup();
+	//wiringPiSetup();
 
 
     // Tell the user the RTC mode
@@ -595,10 +596,10 @@ int main(int argc, char* argv[]) {
                 switchOffClock();
             }
         } else {
-                if (strcmp(_stringToDisplay, turnClockOnTime.c_str()) == 0) {
-                    printf("Clock switching on at %s\n", _stringToDisplay);
-                    switchOnClock();
-                }
+            if (strcmp(_stringToDisplay, turnClockOnTime.c_str()) == 0) {
+                printf("Clock switching on at %s\n", _stringToDisplay);
+                switchOnClock();
+            }
         }
         
         //if (doFireworks && clockIsSwitchedOn)
@@ -615,7 +616,7 @@ int main(int argc, char* argv[]) {
 				//funcDown();
 				//initFireWorks();
 				buttonDelay = millis();
-				printf("UP_BUTTON_PIN\n");
+				printf("DOWN_BUTTON_PIN\n");
 			}
             //if (millis() > (lastRotateFireworks + fireworksCyclePeriod)) {
             //    rotateFireWorks();
