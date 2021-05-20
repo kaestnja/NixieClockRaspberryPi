@@ -150,7 +150,7 @@ void updateRTCHour(tm date) {
 void updateRTCMinute(tm date) {
 	wiringPiI2CWrite(fileDesc, I2CFlush);
 	wiringPiI2CWriteReg8(fileDesc,MINUTE_REGISTER,decToBcd(date.tm_min));
-	wiringPiI2CWriteReg8(fileDesc,HOUR_REGISTER,decToBcd(date.tm_hour));
+	#wiringPiI2CWriteReg8(fileDesc,HOUR_REGISTER,decToBcd(date.tm_hour));
 	wiringPiI2CWrite(fileDesc, I2CFlush);
 }
 void resetRTCSecond() {
@@ -187,10 +187,10 @@ void resetFireWorks() {
 }
 
 void initFireWorks() {
-    printf("in initFireWorks\n");
+    printf("in new initFireWorks\n");
 	redLight = maxLEDBrightness;
-	greenLight = 0;
-	blueLight = 0; 
+	greenLight = maxLEDBrightness;
+	blueLight = maxLEDBrightness; 
 	softPwmWrite(RED_LIGHT_PIN, redLight);
 	softPwmWrite(GREEN_LIGHT_PIN, greenLight);
 	softPwmWrite(BLUE_LIGHT_PIN, blueLight);
@@ -309,7 +309,9 @@ void switchOffClock()
 {
     clockIsSwitchedOn = false;
     digitalWrite(LEpin, LOW);
-    resetFireWorks();
+    if (doFireworks) {
+        resetFireWorks();
+    }
 }
 
 // Interrupt handler to turn off Nixie upon SIGINT(2), SIGQUIT(3), SIGTERM(15), but not SIGKILL(9)
