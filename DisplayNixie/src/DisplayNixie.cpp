@@ -200,7 +200,7 @@ void initFireWorks() {
 void funcMode(void) {
 	static unsigned long modeTime = 0;
 	if ((millis() - modeTime) > DEBOUNCE_DELAY) {
-		printf("MODE button was pressed. new");
+		printf("MODE button was pressed.\n");
 		//puts("MODE button was pressed.");
         // Mode Switch toggles Fireworks on/off
 		//doFireworks = !doFireworks;
@@ -210,6 +210,8 @@ void funcMode(void) {
 		//	initFireWorks();
 		//modeTime = millis();
 	}
+	printf("MODE button was pressed. new\n");
+	modeTime = millis();
 }
 
 void funcUp(void) {
@@ -221,7 +223,7 @@ void funcUp(void) {
 		//	fireworksCyclePeriod = 0;
 		//}
 		//buttonTime = millis();
-		printf("Up button was pressed. new"); // Frequency=%lu\n", fireworksCyclePeriod);
+		printf("Up button was pressed. new\n"); // Frequency=%lu\n", fireworksCyclePeriod);
 	}
 	buttonTime = millis();
 }
@@ -231,7 +233,7 @@ void funcDown(void) {
 	if ((millis() - buttonTime) > DEBOUNCE_DELAY) {
         // Down button slows down Fireworks
 		//fireworksCyclePeriod = (fireworksCyclePeriod - INIT_CYCLE_BUMP);
-		printf("Down button was pressed. new"); // Frequency=%lu\n", fireworksCyclePeriod);
+		printf("Down button was pressed. new\n"); // Frequency=%lu\n", fireworksCyclePeriod);
 	}
 	buttonTime = millis();
 }
