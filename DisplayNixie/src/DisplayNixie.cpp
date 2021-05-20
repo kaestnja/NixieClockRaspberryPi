@@ -391,7 +391,7 @@ int main(int argc, char* argv[]) {
                 	break;
                 	printf ("option %s", long_options[option_index].name);
                 if (optarg)
-                    printf (" with arg %s", optarg);
+                    printf (" with arg %s\n", optarg);
                 	printf ("\n");
                 	break;
             case 'c':
@@ -423,7 +423,7 @@ int main(int argc, char* argv[]) {
                 maxLEDBrightness = atoi(optarg);
                 break;
             default:
-                printf("aborting");
+                printf("aborting\n");
                 abort ();
             }
     }
