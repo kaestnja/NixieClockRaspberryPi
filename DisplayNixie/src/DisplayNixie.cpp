@@ -103,7 +103,7 @@ bool useSystemRTC = true;
 // Set the hour mode
 // Set use12hour = true for hours 0-12 and 1-11 (e.g. a.m./p.m. implied)
 // Set use12hour = false for hours 0-23
-bool use12hour = true;
+bool use12hour = false;
 bool isStartup = true;
 bool doCathodeProtection = true;
 
@@ -132,14 +132,7 @@ tm getRTCDate() {
 	tm date;
 	date.tm_sec =  bcdToDec(wiringPiI2CReadReg8(fileDesc, SECOND_REGISTER));
 	date.tm_min =  bcdToDec(wiringPiI2CReadReg8(fileDesc, MINUTE_REGISTER));
-	if (use12hour)
-	{
-		date.tm_hour = bcdToDec(wiringPiI2CReadReg8(fileDesc, HOUR_REGISTER));
-		if (date.tm_hour > 12)
-			date.tm_hour -= 12;
-	}
-	else
-		date.tm_hour = bcdToDec(wiringPiI2CReadReg8(fileDesc, HOUR_REGISTER));
+	date.tm_hour = bcdToDec(wiringPiI2CReadReg8(fileDesc, HOUR_REGISTER));
 	date.tm_wday = bcdToDec(wiringPiI2CReadReg8(fileDesc, WEEK_REGISTER));
 	date.tm_mday = bcdToDec(wiringPiI2CReadReg8(fileDesc, DAY_REGISTER));
 	date.tm_mon =  bcdToDec(wiringPiI2CReadReg8(fileDesc, MONTH_REGISTER));
