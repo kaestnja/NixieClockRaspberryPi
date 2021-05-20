@@ -6,7 +6,7 @@
     "configurations": [
 
         {
-            "name": "(gdb) Launch",
+            "name": "(gdb) Launch CLITool",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/CLITool/bin/DisplayNixie",
@@ -14,7 +14,7 @@
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
-            "externalConsole": false,
+            "externalConsole": true,
             "MIMode": "gdb",
             "setupCommands": [
                 {
@@ -25,7 +25,7 @@
             ]
         },
         {
-            "name": "(gdb) Launch",
+            "name": "(gdb) Launch DisplayNixie",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/DisplayNixie/bin/DisplayNixie",
@@ -44,23 +44,31 @@
             ]
         },
         {
-            "name": "(gdb) Launch",
+            "name": "GDB Server Launch Firmware",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/Firmware/bin/DisplayNixie",
+            "miDebuggerServerAddress": "localhost:9091",
             "args": ["24hour"],
-            "stopAtEntry": false,
+            "stopAtEntry": true,
             "cwd": "${fileDirname}",
             "environment": [],
             "externalConsole": false,
-            "MIMode": "gdb",
+            // without preLaunchTask, on HOST run: ssh -L9091:localhost:9091 pi@rpi3  gdbserver :9091 ~/program/hello
+            "preLaunchTask": "gdbserver",
+            "serverStarted": "Listening on port",
+            "filterStderr": true,
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                }
-            ]
+                    "text": "enable-pretty-printing",
+                    "ignoreFailures": true,
+                },
+                {"text": "set startup-with-shell off"},
+                {"text": "set gnutarget elf32-littlearm"}
+            ],
+            //"logging": { "engineLogging": true, "trace": true, "traceResponse": true },
+            "MIMode": "gdb",
         },
         {
             "name": "(gdb) Launch",
