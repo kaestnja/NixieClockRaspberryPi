@@ -4,9 +4,9 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "gdbserverFirmware",
+            "label": "gdbserver",
             "type": "shell",
-            "command": "ssh -L9091:localhost:9091 pi@rpinixie 'gdbserver :9091 ~/NixieClockRaspberryPi/Firmware/bin/DisplayNixie'",
+            "command": "ssh -L9091:localhost:9091 pi@rpinixie 'gdbserver :9091 /home/pi/NixieClockRaspberryPi/DisplayNixie/bin/DisplayNixie'",
             "isBackground": true,
             //"isShellCommand": true, <-- replace by type = shell
             "problemMatcher": {
