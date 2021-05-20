@@ -29,9 +29,9 @@ cd "/home/pi/NixieClockRaspberryPi/Firmware for NCS314 v3.x/src" && make
 cd "/home/pi/NixieClockRaspberryPi/Firmware for NCS318/src" && make
 
 sudo "/home/pi/NixieClockRaspberryPi/DisplayNixie/bin/DisplayNixie" 24hour
-sudo "/home/pi/NixieClockRaspberryPi/DisplayNixie/bin/DisplayNixie" 24hour
-sudo "/home/pi/NixieClockRaspberryPi/DisplayNixie/bin/DisplayNixie" 24hour
-sudo "/home/pi/NixieClockRaspberryPi/DisplayNixie/bin/DisplayNixie" 24hour
+sudo "/home/pi/NixieClockRaspberryPi/Firmware/bin/DisplayNixie" 24hour
+sudo "/home/pi/NixieClockRaspberryPi/Firmware for NCS314 v3.x/bin/DisplayNixie" 24hour
+sudo "/home/pi/NixieClockRaspberryPi/Firmware for NCS318/bin/DisplayNixie" 24hour
 
 sudo "/home/pi/NixieClockRaspberryPi/CLITool/bin/DisplayNixie" 123456
 sudo "/home/pi/NixieClockRaspberryPi/CLITool/bin/DisplayNixie" now
