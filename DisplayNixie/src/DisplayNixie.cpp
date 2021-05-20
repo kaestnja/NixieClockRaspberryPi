@@ -7,7 +7,7 @@
 //============================================================================
 
 #define _VERSION "2.3.3 SHANER GILLETT KAESTNER"
-#define _SUBVERSION "1"
+#define _SUBVERSION "3"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -254,7 +254,7 @@ void dotBlink()
 {
     dotState = !dotState;
 }
-
+/*
 void rotateFireWorks() {
     printf("in rotateFireWorks\n");
     
@@ -283,6 +283,7 @@ void rotateFireWorks() {
         rotator = 0;
     }
 }
+*/
 
 uint32_t addBlinkTo32Rep(uint32_t var) {
 	if (dotState)
@@ -527,9 +528,9 @@ int main(int argc, char* argv[]) {
 	initPin(MODE_BUTTON_PIN);
 
     // Initial setup for multi-color LED's based on default doFireworks boolean
-    softPwmCreate(GREEN_LIGHT_PIN, 0, MAX_POWER_EXTENT);
-    softPwmCreate(BLUE_LIGHT_PIN, 0, MAX_POWER_EXTENT);
-    softPwmCreate(RED_LIGHT_PIN, 0, MAX_POWER_EXTENT);
+    //softPwmCreate(GREEN_LIGHT_PIN, 0, MAX_POWER_EXTENT);
+    //softPwmCreate(BLUE_LIGHT_PIN, 0, MAX_POWER_EXTENT);
+    //softPwmCreate(RED_LIGHT_PIN, 0, MAX_POWER_EXTENT);
 	//if (doFireworks) {
 	//	initFireWorks();
     //}
@@ -565,7 +566,7 @@ int main(int argc, char* argv[]) {
 
     // Loop forever displaying the time
 	long buttonDelay = millis();
-    unsigned long lastRotateFireworks = millis();
+    //unsigned long lastRotateFireworks = millis();
 
 	do {      
 		char _stringToDisplay[8];
