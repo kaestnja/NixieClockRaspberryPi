@@ -6,7 +6,7 @@
         {
             "label": "gdbserverFirmware",
             "type": "shell",
-            "command": "ssh -L9091:localhost:9091 pi@rpi3 'gdbserver :9091 ~/NixieClockRaspberryPi/Firmware/bin/DisplayNixie'",
+            "command": "ssh -L9091:localhost:9091 pi@rpinixie 'gdbserver :9091 ~/NixieClockRaspberryPi/Firmware/bin/DisplayNixie'",
             "isBackground": true,
             //"isShellCommand": true, <-- replace by type = shell
             "problemMatcher": {
