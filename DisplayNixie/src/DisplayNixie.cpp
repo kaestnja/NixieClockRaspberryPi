@@ -182,9 +182,9 @@ void resetFireWorks() {
 	redLight = 0;
 	greenLight = 0;
 	blueLight = 0; 
-	softPwmWrite(RED_LIGHT_PIN, redLight);
-	softPwmWrite(GREEN_LIGHT_PIN, greenLight);
-	softPwmWrite(BLUE_LIGHT_PIN, blueLight);
+	//softPwmWrite(RED_LIGHT_PIN, redLight);
+	//softPwmWrite(GREEN_LIGHT_PIN, greenLight);
+	//softPwmWrite(BLUE_LIGHT_PIN, blueLight);
 }
 
 void initFireWorks() {
@@ -192,9 +192,9 @@ void initFireWorks() {
 	redLight = maxLEDBrightness;
 	greenLight = maxLEDBrightness;
 	blueLight = maxLEDBrightness; 
-	softPwmWrite(RED_LIGHT_PIN, redLight);
-	softPwmWrite(GREEN_LIGHT_PIN, greenLight);
-	softPwmWrite(BLUE_LIGHT_PIN, blueLight);
+	//softPwmWrite(RED_LIGHT_PIN, redLight);
+	//softPwmWrite(GREEN_LIGHT_PIN, greenLight);
+	//softPwmWrite(BLUE_LIGHT_PIN, blueLight);
 }
 
 void funcMode(void) {
